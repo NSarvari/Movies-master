@@ -16,8 +16,5 @@ namespace Movies.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public MovieCategory MovieCategory{ get; set; }
-
-        //Relations
-        public Producer producer { get; set; }
     }
 }
