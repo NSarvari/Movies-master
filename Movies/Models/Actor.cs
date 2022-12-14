@@ -13,5 +13,8 @@ namespace Movies.Models
         public string FullName { get; set; }
         public string Bio { get; set; }
         public string ProfilePictureUrl { get; set; }
+
+        //Relations
+        public List<MovieActor> MovieActors { get; set; }
     }
 }
