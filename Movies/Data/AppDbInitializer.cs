@@ -125,14 +125,14 @@ namespace Movies.Data
                     {
                         new MovieActor()
                         {
-                            MovieID=1,
-                            ActorID=3
+                            MovieId=1,
+                            ActorId=3
                         },
 
                         new MovieActor()
                         {
-                            MovieID=2,
-                            ActorID=1
+                            MovieId=2,
+                            ActorId=1
                         }
                     });
 

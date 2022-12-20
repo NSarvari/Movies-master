@@ -13,27 +13,22 @@ namespace Movies.Data
         {
 
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<MovieActor>().HasKey(am => new
-            {
-                am.ActorID,
-                am.MovieID
-            });
-
-            modelBuilder.Entity<MovieActor>().HasOne(m => new
-            {
-                m.MovieID
-            });
-
-
-            modelBuilder.Entity<MovieActor>().HasOne(a => new
-            {
-                a.ActorID
-            });
-
             base.OnModelCreating(modelBuilder);
+            // many to many for Movies and Actors
+            modelBuilder.Entity<MovieActor>()
+                .HasKey(t => new { t.MovieId, t.ActorId });
+
+            modelBuilder.Entity<MovieActor>()
+                .HasOne(pt => pt.Movie)
+                .WithMany(p => p.MovieActors)
+                .HasForeignKey(pt => pt.MovieId);
+
+            modelBuilder.Entity<MovieActor>()
+                .HasOne(pt => pt.Actor)
+                .WithMany(t => t.MovieActors)
+                .HasForeignKey(pt => pt.ActorId);
         }
 
         //Seting Models
