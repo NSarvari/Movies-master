@@ -10,8 +10,14 @@ namespace Movies.Models
     {
         [Key]
         public int ActorId { get; set; }
+
+        [Display(Name ="FullName")]
         public string FullName { get; set; }
+
+        [Display(Name = "Bio")]
         public string Bio { get; set; }
+
+        [Display(Name = "Profile Picture Url")]
         public string ProfilePictureUrl { get; set; }
 
         //Relations
