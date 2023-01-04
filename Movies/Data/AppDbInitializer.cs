@@ -136,26 +136,26 @@ namespace Movies.Data
                     //context.SaveChanges();
                 }
                 //Producer
-                //if (!context.Producers.Any())
-                //{
-                //    context.Producers.AddRange(new List<Producer>()
-                //    {
-                //        new Producer()
-                //        {
-                //            FullName="Tom Cruise",
-                //            Bio="Thomas Cruise Mapother IV, known professionally as Tom Cruise, is an American actor and producer.",
-                //            ProfilePictureUrl="https://pyxis.nymag.com/v1/imgs/4e5/1f7/a917c50e70a4c16bc35b9f0d8ce0352635-14-tom-cruise.rsquare.w700.jpg"
-                //        },
+                if (!context.Producers.Any())
+                {
+                    context.Producers.AddRange(new List<Producer>()
+                    {
+                        new Producer()
+                        {
+                            FullName="Tom Cruise",
+                            Bio="Thomas Cruise Mapother IV, known professionally as Tom Cruise, is an American actor and producer.",
+                            ProfilePictureUrl="https://pyxis.nymag.com/v1/imgs/4e5/1f7/a917c50e70a4c16bc35b9f0d8ce0352635-14-tom-cruise.rsquare.w700.jpg"
+                        },
 
-                //        new Producer()
-                //        {
-                //            FullName="Jerry Bruckheimer",
-                //            Bio="Jerome Leon Bruckheimer is an American film and television producer.",
-                //            ProfilePictureUrl="https://resizing.flixster.com/LTs_UeHAc7D4LRRwMrJE5Q3vUYA=/218x280/v2/https://flxt.tmsimg.com/assets/71005_v9_ba.jpg"
-                //        }
-                //    });
+                        new Producer()
+                        {
+                            FullName="Jerry Bruckheimer",
+                            Bio="Jerome Leon Bruckheimer is an American film and television producer.",
+                            ProfilePictureUrl="https://resizing.flixster.com/LTs_UeHAc7D4LRRwMrJE5Q3vUYA=/218x280/v2/https://flxt.tmsimg.com/assets/71005_v9_ba.jpg"
+                        }
+                    });
 
-                //}
+                }
                 //context.SaveChanges();
             }
         }

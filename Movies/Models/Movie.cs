@@ -10,12 +10,26 @@ namespace Movies.Models
     {
         [Key]
         public int MovieId { get; set; }
+
+        [Display(Name = "Name")]
         public string Name { get; set; }
+
+        [Display(Name = "Description")]
         public string Description { get; set; }
+
+        [Display(Name = "ImageUrl")]
         public string ImageUrl { get; set; }
+
+        [Display(Name = "Price")]
         public string Price { get; set; }
+
+        [Display(Name = "StartDate")]
         public DateTime StartDate { get; set; }
+
+        [Display(Name = "EndDate")]
         public DateTime EndDate { get; set; }
+
+        [Display(Name = "MovieCategory")]
         public MovieCategory MovieCategory{ get; set; }
 
         //Relations
