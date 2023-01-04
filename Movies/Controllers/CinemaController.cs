@@ -19,7 +19,7 @@ namespace Movies.Controllers
         public IActionResult Index()
         {
             var data = _context.Cinemas.ToList();
-            return View();
+            return View("Cinema", data);
         }
     }
 }

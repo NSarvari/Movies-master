@@ -156,7 +156,7 @@ namespace Movies.Data
                 //    });
 
                 //}
-                context.SaveChanges();
+                //context.SaveChanges();
             }
         }
     }
