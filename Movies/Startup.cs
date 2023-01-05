@@ -32,6 +32,10 @@ namespace Movies
 
             //service configurations
             services.AddScoped<IActorService, ActorService>();
+            services.AddScoped<IProducerService, ProducerService>();
+            services.AddScoped<ICinemaService, CinemaService>();
+            services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<IMovieActorService, MovieActorService>();
 
             services.AddControllersWithViews();
         }

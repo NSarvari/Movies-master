@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Movies.Data;
+using Movies.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +10,16 @@ namespace Movies.Controllers
 {
     public class ProducerController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IProducerService _producerService;
 
-        public ProducerController(AppDbContext context)
+        public ProducerController(IProducerService producerService)
         {
-            _context = context;
+            _producerService = producerService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var data = _context.Producers.ToList();
+            var data = await _producerService.GetAll();
             return View("Producer", data);
         }
     }
