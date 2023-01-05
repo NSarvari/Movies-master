@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Movies.Data;
+using Movies.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,10 @@ namespace Movies
             //DbContext configuration
             services.AddDbContext<AppDbContext>(options=>options.
             UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
-            
+
+            //service configurations
+            services.AddScoped<IActorService, ActorService>();
+
             services.AddControllersWithViews();
         }
 
