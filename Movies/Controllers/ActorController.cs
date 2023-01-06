@@ -21,5 +21,10 @@ namespace Movies.Controllers
             var data = await _actorService.GetAll();
             return View("Actor",data);
         }
+        //Get: Actor/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
