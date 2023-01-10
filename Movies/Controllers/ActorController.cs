@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Movies.Data;
 using Movies.Data.Services;
+using Movies.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Movies.Controllers
 {
     public class ActorController : Controller
     {
-        private readonly IActorService _actorService; 
+        private readonly IActorService _actorService;
 
         public ActorController(IActorService actorService)
         {
@@ -19,7 +20,7 @@ namespace Movies.Controllers
         public async Task<IActionResult> Index()
         {
             var data = await _actorService.GetAll();
-            return View("Actor",data);
+            return View("Actor", data);
         }
         //Get: Actor/Create
         public IActionResult Create()
