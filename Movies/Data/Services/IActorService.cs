@@ -10,7 +10,7 @@ namespace Movies.Data.Services
         Task<IEnumerable<Actor>> GetAll();
         Task<Actor> GetById(int id);
         Task Add(Actor actor);
-        void Update(int id, Actor actor);
+        Task<Actor> Update(int id,Actor actor);
         void Delete(int id);
     }
 }

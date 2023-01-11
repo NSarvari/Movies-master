@@ -38,9 +38,11 @@ namespace Movies.Data.Services
             return result;
         }
 
-        public void Update(int id, Actor actor)
+        public async Task<Actor> Update(int id,Actor actor)
         {
-            throw new NotImplementedException();
+            _appDbContext.Update(actor);
+            await _appDbContext.SaveChangesAsync();
+            return actor;
         }
     }
 }

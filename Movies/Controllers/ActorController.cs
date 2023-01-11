@@ -49,5 +49,13 @@ namespace Movies.Controllers
             }
             return View(actorDetails);
         }
+
+        //Get:Actors/Edit
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("ActorId,FullName,ProfilePictureUrl,Bio")]Actor actor)
+        {
+            await _actorService.Update(id,actor);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
