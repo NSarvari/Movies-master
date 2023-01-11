@@ -5,13 +5,15 @@
 }
 <div class="row text">
     <div class="col-md-8 offset-2">
-        <p>
-            <h1>Add a New Actor</h1>
-        </p>
+
         <div class="row">
             <div class="col-md-8 offset-4">
+
                 <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <p>
+                        <h1>Add a New Actor</h1>
+                    </p>
                     <div class="form-group">
                         <label asp-for="ProfilePictureUrl" class="control-label"></label>
                         <input asp-for="ProfilePictureUrl" class="form-control" />

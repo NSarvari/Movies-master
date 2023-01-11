@@ -41,9 +41,9 @@ namespace Movies.Controllers
         //Get:Actors/Details/id
         public async Task<IActionResult> Details(int id)
         {
-            var actorDetails =await _actorService.GetById(id);
+            var actorDetails = await _actorService.GetById(id);
 
-            if (actorDetails==null)
+            if (actorDetails == null)
             {
                 return View("Empty");
             }
@@ -51,10 +51,27 @@ namespace Movies.Controllers
         }
 
         //Get:Actors/Edit
-        [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("ActorId,FullName,ProfilePictureUrl,Bio")]Actor actor)
+        public async Task<IActionResult> Edit(int id)
         {
-            await _actorService.Update(id,actor);
+            var actorDetails = await _actorService.GetById(id);
+            if (actorDetails == null)
+            {
+                return View("NotFound");
+            }
+
+            return View(actorDetails);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("ActorId,FullName,ProfilePictureUrl,Bio")] Actor actor)
+        {
+            actor.ActorId = id;
+
+            if (!ModelState.IsValid)
+            {
+
+                    return View(actor);
+            }
+            await _actorService.Update(id, actor);
             return RedirectToAction(nameof(Index));
         }
     }
