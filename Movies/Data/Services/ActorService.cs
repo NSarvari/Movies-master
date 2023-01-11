@@ -17,8 +17,8 @@ namespace Movies.Data.Services
 
         public async Task Add(Actor actor)
         {
-            _appDbContext.Actors.Add(actor);
-            _appDbContext.SaveChanges();
+            await _appDbContext.Actors.AddAsync(actor);
+            await _appDbContext.SaveChangesAsync();
         }
 
         public void Delete(int id)

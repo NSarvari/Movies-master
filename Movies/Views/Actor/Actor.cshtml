@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Actor>
 
-@{ 
+@{
     ViewData["Title"] = "List of Actors";
 }
 
@@ -9,33 +9,35 @@
         <table>
             <thead>
                 <tr>
-                    <th>@Html.DisplayNameFor(model=>model.ProfilePictureUrl)</th>
+                    <th>@Html.DisplayNameFor(model => model.ProfilePictureUrl)</th>
                     <th>@Html.DisplayNameFor(model => model.FullName)</th>
                     <th>@Html.DisplayNameFor(model => model.Bio)</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
-                 {
-                <tr>
-                    <td class="align-middle">
-                        <img class="rounded-circle" src="@item.ProfilePictureUrl"
-                             alt="@item.FullName" style="max-width:150px" />
-                    </td>
-                    <td class="align-middle">
-                        @Html.DisplayFor(modelItem=>item.FullName)
-                    </td>
-                    <td class="align-middle">
-                        @Html.DisplayFor(modelItem => item.Bio)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            <img class="rounded-circle" src="@item.ProfilePictureUrl"
+                                 alt="@item.FullName" style="max-width:150px" />
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Bio)
 
-                    </td>
-                    <td class="align-middle">
-                        <a class="btn btn-outline-primary"><i class="bi bi-pencil-square">
-                              </i>Edit</a>
-                        <a class="btn btn-danger"><i class="bi bi-trash"></i>Delete</a>
-                    </td>
-                </tr>
-                 }
+                        </td>
+                        <td class="align-middle">
+                            <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.ActorId">
+                                <i class="bi bi-pencil-square"></i>Details
+                            </a>
+                            <a class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i>Edit</a>
+                            <a class="btn btn-danger"><i class="bi bi-trash"></i>Delete</a>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
