@@ -22,10 +22,32 @@ namespace Movies.Controllers
             var data = await _actorService.GetAll();
             return View("Actor", data);
         }
-        //Get: Actor/Create
+
+
+        //Get: Actors/Create
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("FullName,ProfilePictureUrl,Bio")] Actor actor)
+        {
+            await _actorService.Add(actor);
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        //Get:Actors/Details/id
+        public async Task<IActionResult> Details(int id)
+        {
+            var actorDetails =await _actorService.GetById(id);
+
+            if (actorDetails==null)
+            {
+                return View("Empty");
+            }
+            return View(actorDetails);
         }
     }
 }

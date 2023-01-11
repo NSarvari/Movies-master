@@ -12,12 +12,15 @@ namespace Movies.Models
         public int ActorId { get; set; }
 
         [Display(Name ="FullName")]
+        [Required(ErrorMessage ="Full Name field cannot be empty")]
         public string FullName { get; set; }
 
         [Display(Name = "Bio")]
+        [Required(ErrorMessage = "Bio field cannot be empty")]
         public string Bio { get; set; }
 
         [Display(Name = "Profile Picture Url")]
+        [Required(ErrorMessage = "Profile Picture field cannot be empty")]
         public string ProfilePictureUrl { get; set; }
 
         //Relations

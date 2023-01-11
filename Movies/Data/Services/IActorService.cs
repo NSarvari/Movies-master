@@ -8,8 +8,8 @@ namespace Movies.Data.Services
     public interface IActorService
     {
         Task<IEnumerable<Actor>> GetAll();
-        Actor GetById(int id);
-        void Add(Actor actor);
+        Task<Actor> GetById(int id);
+        Task Add(Actor actor);
         void Update(int id, Actor actor);
         void Delete(int id);
     }
