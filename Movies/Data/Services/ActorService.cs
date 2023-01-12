@@ -21,9 +21,11 @@ namespace Movies.Data.Services
             await _appDbContext.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            var result = await _appDbContext.Actors.FirstOrDefaultAsync(n => n.ActorId == id);
+            _appDbContext.Actors.Remove(result);
+            await _appDbContext.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Actor>> GetAll()

@@ -11,6 +11,6 @@ namespace Movies.Data.Services
         Task<Actor> GetById(int id);
         Task Add(Actor actor);
         Task<Actor> Update(int id,Actor actor);
-        void Delete(int id);
+        Task Delete(int id);
     }
 }
