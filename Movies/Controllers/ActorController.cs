@@ -17,6 +17,8 @@ namespace Movies.Controllers
         {
             _actorService = actorService;
         }
+
+        //Get: Actors
         public async Task<IActionResult> Index()
         {
             var data = await _actorService.GetAll();

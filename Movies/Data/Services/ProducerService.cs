@@ -16,14 +16,17 @@ namespace Movies.Data.Services
             _appDbContext = appDbContext;
         }
 
-        public void Add(Producer producer)
+        public async Task Add(Producer producer)
         {
-            throw new NotImplementedException();
+            await _appDbContext.Producers.AddAsync(producer);
+            await _appDbContext.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            var result = await _appDbContext.Producers.FirstOrDefaultAsync(n => n.ProducerId == id);
+            _appDbContext.Producers.Remove(result);
+            await _appDbContext.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Producer>> GetAll()
@@ -32,14 +35,17 @@ namespace Movies.Data.Services
             return result;
         }
 
-        public Producer GetById(int id)
+        public async Task<Producer> GetById(int id)
         {
-            throw new NotImplementedException();
+            var result = await _appDbContext.Producers.FirstOrDefaultAsync(n => n.ProducerId == id);
+            return result;
         }
 
-        public void Update(int id, Producer producer)
+        public async Task<Producer> Update(int id, Producer producer)
         {
-            throw new NotImplementedException();
+            _appDbContext.Update(producer);
+            await _appDbContext.SaveChangesAsync();
+            return producer;
         }
     }
 }

@@ -7,9 +7,9 @@ namespace Movies.Data.Services
     public interface IProducerService
     {
         Task<IEnumerable<Producer>> GetAll();
-        Producer GetById(int id);
-        void Add(Producer producer);
-        void Update(int id, Producer producer);
-        void Delete(int id);
+        Task<Producer> GetById(int id);
+        Task Add(Producer producer);
+        Task<Producer> Update(int id, Producer actor);
+        Task Delete(int id);
     }
 }
