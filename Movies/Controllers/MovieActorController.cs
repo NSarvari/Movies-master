@@ -24,7 +24,5 @@ namespace Movies.Controllers
             var data = await _movieActorService.GetAll();
             return View("MovieActor",data);
         }
-
-
     }
 }

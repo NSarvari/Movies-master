@@ -16,9 +16,10 @@ namespace Movies.Data.Services
             _appDbContext = appDbContext;
         }
 
-        public void Add(Movie actor)
+        public async Task Add(Movie movie)
         {
-            throw new NotImplementedException();
+            await _appDbContext.Movies.AddAsync(movie);
+            await _appDbContext.SaveChangesAsync();
         }
 
         public void Delete(int id)
@@ -28,7 +29,7 @@ namespace Movies.Data.Services
 
         public async Task<IEnumerable<Movie>> GetAll()
         {
-            var result = await _appDbContext.Movies.ToListAsync();
+            var result = await _appDbContext.Movies.Include(n=>n.Cinema).ToListAsync();
             return result;
         }
 

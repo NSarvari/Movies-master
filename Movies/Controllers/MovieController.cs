@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Movies.Data;
 using Movies.Data.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Movies.Models;
 using System.Threading.Tasks;
 
 namespace Movies.Controllers
@@ -23,6 +20,19 @@ namespace Movies.Controllers
         {
             var data = await _movieService.GetAll();
             return View("Movie", data);
+        }
+
+        //Get: Movies/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("Name,Description,ImageUrl,Price,StartDate,EndDate,MovieCategory")] Movie movie)
+        {
+            await _movieService.Add(movie);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
