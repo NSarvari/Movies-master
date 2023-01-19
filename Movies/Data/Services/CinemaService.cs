@@ -16,14 +16,18 @@ namespace Movies.Data.Services
             _appDbContext = appDbContext;
         }
 
-        public void Add(Cinema cinema)
+
+        public async Task Add(Cinema cinema)
         {
-            throw new NotImplementedException();
+            await _appDbContext.Cinemas.AddAsync(cinema);
+            await _appDbContext.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            var result = await _appDbContext.Cinemas.FirstOrDefaultAsync(n => n.CinemaId == id);
+            _appDbContext.Cinemas.Remove(result);
+            await _appDbContext.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Cinema>> GetAll()
@@ -32,14 +36,17 @@ namespace Movies.Data.Services
             return result;
         }
 
-        public Cinema GetById(int id)
+        public async Task<Cinema> GetById(int id)
         {
-            throw new NotImplementedException();
+            var result = await _appDbContext.Cinemas.FirstOrDefaultAsync(n => n.CinemaId == id);
+            return result;
         }
 
-        public void Update(int id, Cinema cinema)
+        public async Task<Cinema> Update(int id, Cinema cinema)
         {
-            throw new NotImplementedException();
+            _appDbContext.Update(cinema);
+            await _appDbContext.SaveChangesAsync();
+            return cinema;
         }
     }
 }

@@ -70,8 +70,7 @@ namespace Movies.Controllers
 
             if (!ModelState.IsValid)
             {
-
-                    return View(actor);
+                 return View(actor);
             }
             await _actorService.Update(id, actor);
             return RedirectToAction(nameof(Index));

@@ -9,9 +9,9 @@ namespace Movies.Data.Services
     public interface ICinemaService
     {
         Task<IEnumerable<Cinema>> GetAll();
-        Cinema GetById(int id);
-        void Add(Cinema cinema);
-        void Update(int id, Cinema cinema);
-        void Delete(int id);
+        Task<Cinema> GetById(int id);
+        Task Add(Cinema cinema);
+        Task<Cinema> Update(int id, Cinema cinema);
+        Task Delete(int id);
     }
 }
