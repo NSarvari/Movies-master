@@ -35,14 +35,8 @@ namespace Movies.Models
         //Relations
         public List<MovieActor> MovieActors { get; set; }
 
-        [ForeignKey("CinemaId")]
-        public int CinemaId { get; set; }
+        public List<Cinema> Cinemas { get; set; }
 
-        public Cinema Cinema { get; set; }
-
-        [ForeignKey("ProducerId")]
-        public int ProducerID { get; set; }
-
-        public Producer Producer { get; set; }
+        public List<Producer> Producers { get; set; }
     }
 }

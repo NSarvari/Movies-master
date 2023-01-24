@@ -44,7 +44,7 @@ namespace Movies.Data
                         },
 
                     });
-                    //context.SaveChanges();
+                    context.SaveChanges();
                 }
 
                 //Actor
@@ -81,7 +81,7 @@ namespace Movies.Data
                         },
                     });
 
-                    //context.SaveChanges();
+                    context.SaveChanges();
                 }
                 //Movie
                 if (!context.Movies.Any())
@@ -96,8 +96,6 @@ namespace Movies.Data
                             Price="12 leva",
                             StartDate=DateTime.Now.AddDays(-4),
                             EndDate=DateTime.Now.AddDays(+2),
-                            CinemaId=1,
-                            ProducerID=2,
                             MovieCategory=MovieCategory.Action
                         },
                         new Movie()
@@ -108,12 +106,10 @@ namespace Movies.Data
                             Price = "12 leva",
                             StartDate = DateTime.Now.AddDays(-10),
                             EndDate = DateTime.Now.AddDays(+12),
-                            CinemaId = 2,
-                            ProducerID = 1,
                             MovieCategory = MovieCategory.Action
                         }
                     });
-                    //context.SaveChanges();
+                    context.SaveChanges();
                 }
                 //MovieActor
                 if (!context.MovieActors.Any())
@@ -133,7 +129,7 @@ namespace Movies.Data
                         }
                     });
 
-                    //context.SaveChanges();
+                    context.SaveChanges();
                 }
                 //Producer
                 if (!context.Producers.Any())
@@ -156,7 +152,7 @@ namespace Movies.Data
                     });
 
                 }
-                //context.SaveChanges();
+                context.SaveChanges();
             }
         }
     }

@@ -29,6 +29,7 @@ namespace Movies.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Name,Description,ImageUrl,Price,StartDate,EndDate,MovieCategory")] Movie movie)
         {
             await _movieService.Add(movie);

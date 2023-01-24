@@ -29,7 +29,7 @@ namespace Movies.Data.Services
 
         public async Task<IEnumerable<Movie>> GetAll()
         {
-            var result = await _appDbContext.Movies.Include(n=>n.Cinema).ToListAsync();
+            var result = await _appDbContext.Movies.ToListAsync();
             return result;
         }
 
