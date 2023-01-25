@@ -16,9 +16,10 @@ namespace Movies.Data.Services
             _appDbContext = appDbContext;
         }
 
-        public void Add(MovieActor movieActor)
+        public async Task Add(MovieActor movieActor)
         {
-            throw new NotImplementedException();
+            await _appDbContext.MovieActors.AddAsync(movieActor);
+            await _appDbContext.SaveChangesAsync();
         }
 
         public void Delete(int id)
@@ -32,14 +33,17 @@ namespace Movies.Data.Services
             return result;
         }
 
-        public MovieActor GetById(int id)
+        public async Task<MovieActor> GetById(int id)
         {
-            throw new NotImplementedException();
+            var result = await _appDbContext.MovieActors.FirstOrDefaultAsync(n => n.MovieId == id);
+            return result;
         }
 
-        public void Update(int id, MovieActor movieActor)
+        public async Task<MovieActor> Update(int id, MovieActor movieActor)
         {
-            throw new NotImplementedException();
+            _appDbContext.Update(movieActor);
+            await _appDbContext.SaveChangesAsync();
+            return movieActor;
         }
     }
 }

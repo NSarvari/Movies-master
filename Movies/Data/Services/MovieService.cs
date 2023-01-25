@@ -24,7 +24,9 @@ namespace Movies.Data.Services
 
         public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            var result = await _appDbContext.Movies.FirstOrDefaultAsync(n => n.MovieId == id);
+            _appDbContext.Movies.Remove(result);
+            await _appDbContext.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Movie>> GetAll()
@@ -41,7 +43,9 @@ namespace Movies.Data.Services
 
         public async Task<Movie> Update(int id, Movie movie)
         {
-            throw new NotImplementedException();
+            _appDbContext.Update(movie);
+            await _appDbContext.SaveChangesAsync();
+            return movie;
         }
     }
 }

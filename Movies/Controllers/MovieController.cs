@@ -46,5 +46,55 @@ namespace Movies.Controllers
             }
             return View(movieDetails);
         }
+
+        //Get:Movie/Edit
+        public async Task<IActionResult> Edit(int id)
+        {
+            var movieDetails = await _movieService.GetById(id);
+            if (movieDetails == null)
+            {
+                return View("NotFound");
+            }
+
+            return View(movieDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("MovieId,Name,Description,ImageUrl,Price,StartDate,EndDate,MovieCategory")] Movie movie)
+        {
+            movie.MovieId = id;
+
+            if (!ModelState.IsValid)
+            {
+                return View(movie);
+            }
+            await _movieService.Update(id, movie);
+            return RedirectToAction(nameof(Index));
+        }
+
+        //Get: Movie/Delete/id
+        public async Task<IActionResult> Delete(int id)
+        {
+            var movieDetails = await _movieService.GetById(id);
+            if (movieDetails == null)
+            {
+                return View("NotFound");
+            }
+
+            return View(movieDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirm(int id)
+        {
+            var movieDetails = await _movieService.GetById(id);
+            if (movieDetails == null)
+            {
+                return View("NotFound");
+            }
+
+            await _movieService.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

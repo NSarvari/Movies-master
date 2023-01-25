@@ -9,9 +9,9 @@ namespace Movies.Data.Services
     public interface IMovieActorService
     {
         Task<IEnumerable<MovieActor>> GetAll();
-        MovieActor GetById(int id);
-        void Add(MovieActor movieActor);
-        void Update(int id, MovieActor movieActor);
+        Task<MovieActor> GetById(int id);
+        Task Add(MovieActor movieActor);
+        Task<MovieActor> Update(int id, MovieActor movieActor);
         void Delete(int id);
     }
 }
