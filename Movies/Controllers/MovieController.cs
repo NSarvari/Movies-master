@@ -29,11 +29,22 @@ namespace Movies.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Name,Description,ImageUrl,Price,StartDate,EndDate,MovieCategory")] Movie movie)
         {
             await _movieService.Add(movie);
             return RedirectToAction(nameof(Index));
+        }
+
+        //Get:Movies/Details/id
+        public async Task<IActionResult> Details(int id)
+        {
+            var movieDetails = await _movieService.GetById(id);
+
+            if (movieDetails == null)
+            {
+                return View("NotFound");
+            }
+            return View(movieDetails);
         }
     }
 }

@@ -1,0 +1,60 @@
+﻿@model Movie
+
+@{
+    ViewData["Title"] = "Movie Details";
+}
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Movie's Details</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-4">
+                <div class="form-group text-center">
+                    <img class="border-info rounded-circle" style="max-width:150px" id="ImageUrl" />
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ImageUrl" class="control-label"></label>
+                    <input asp-for="ImageUrl" class="form-control" readonly />
+                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" readonly />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MovieCategory" class="control-label"></label>
+                    <input asp-for="MovieCategory" class="form-control" readonly />
+                    <span asp-validation-for="MovieCategory" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" readonly />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" readonly />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StartDate" class="control-label"></label>
+                    <input asp-for="StartDate" class="form-control" readonly />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EndDate" class="control-label"></label>
+                    <input asp-for="EndDate" class="form-control" readonly />
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-outline-success" asp-action="Edit" asp-route-id="@Model.MovieId">Edit</a>
+                    <a class="btn btn-outline-secondary" asp-action="Index">Show All Movies</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
