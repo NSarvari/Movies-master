@@ -45,7 +45,8 @@ namespace Movies
             services.AddScoped<ICinemaService, CinemaService>();
             services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<IMovieActorService, MovieActorService>();
-
+            services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
+            
             services.AddControllersWithViews();
         }
 
