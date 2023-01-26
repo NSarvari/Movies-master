@@ -1,12 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Movies.Data;
 using Movies.Data.Services;
+using Movies.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +31,13 @@ namespace Movies
             //DbContext configuration
             services.AddDbContext<AppDbContext>(options=>options.
             UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
+
+            //For Identity
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.ConfigureApplicationCookie(op => op.LoginPath = "/UserAuthentication/Login");
 
             //service configurations
             services.AddScoped<IActorService, ActorService>();
@@ -58,6 +67,7 @@ namespace Movies
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
